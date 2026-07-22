@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GHIT — Chat Assistant</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="chat-widget">
+    <div id="chat-header">
+      <span>GHIT Assistant</span>
+      <span id="chat-lang-toggle">EN / HA auto</span>
+    </div>
+    <div id="chat-messages" role="log" aria-live="polite"></div>
+    <form id="chat-form">
+      <input
+        id="chat-input"
+        type="text"
+        placeholder="Type your message... / Rubuta saƙonka..."
+        autocomplete="off"
+        maxlength="4000"
+      />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <script src="chat.js"></script>
+</body>
+</html>

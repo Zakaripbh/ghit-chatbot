@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hours",
+    "question": "What are your business hours?",
+    "answer": "Our support team is available Monday to Saturday, 8am to 6pm (WAT).",
+    "tags": ["hours", "open", "time", "aiki", "lokaci"]
+  },
+  {
+    "id": "contact",
+    "question": "How can I contact support?",
+    "answer": "You can reach us by email at support@example.com or via this chat.",
+    "tags": ["contact", "support", "email", "taimako"]
+  },
+  {
+    "id": "pricing",
+    "question": "How much does the service cost?",
+    "answer": "Pricing depends on the plan you choose. Please check the Pricing page on our website for the latest rates.",
+    "tags": ["price", "cost", "kudi", "plan"]
+  }
+]

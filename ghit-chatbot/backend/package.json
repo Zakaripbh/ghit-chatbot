@@ -1,0 +1,20 @@
+{
+  "name": "ghit-chatbot-backend",
+  "version": "1.0.0",
+  "description": "Bilingual (English/Hausa) AI chatbot backend powered by Claude",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "ioredis": "^5.4.1",
+    "node-fetch": "^2.7.0"
+  }
+}
