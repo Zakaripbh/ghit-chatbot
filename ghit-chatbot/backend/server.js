@@ -32,5 +32,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(config.port, () => {
-  console.log(`GHIT chatbot backend listening on port ${config.port} (${config.nodeEnv})`);
+  console.log(`GHIT Health Assistant  backend listening on port ${config.port} (${config.nodeEnv})`);
 });
