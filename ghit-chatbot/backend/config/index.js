@@ -10,7 +10,7 @@ module.exports = {
 
   // AI Provider Selection
   ai: {
-    provider: process.env.AI_PROVIDER || 'anthropic',
+    provider: process.env.AI_PROVIDER || 'gemini',
   },
 
   // Anthropic (Claude)
