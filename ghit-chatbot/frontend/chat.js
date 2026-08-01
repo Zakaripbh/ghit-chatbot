@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api/chat";
+const API_URL = "https://ghit-chatbot-production.up.railway.app/api/chat";
 
 const messagesEl = document.getElementById("chat-messages");
 const formEl = document.getElementById("chat-form");
