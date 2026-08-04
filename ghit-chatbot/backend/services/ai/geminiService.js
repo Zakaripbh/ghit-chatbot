@@ -1,4 +1,3 @@
-const fetch = require("node-fetch");
 const config = require("../../config");
 
 console.log(">>> USING REST GEMINI SERVICE <<<");
@@ -25,11 +24,11 @@ async function getReply(userId, userText) {
   });
 
   const data = await response.json();
+  console.log("Gemini Response:", JSON.stringify(data, null, 2));
 
   if (!response.ok) {
-    console.error("[Gemini REST]", data);
-    throw new Error(data.error?.message || "Gemini request failed");
-  }
+  throw new Error(JSON.stringify(data));
+}
 
   return (
     data.candidates?.[0]?.content?.parts?.[0]?.text ||
