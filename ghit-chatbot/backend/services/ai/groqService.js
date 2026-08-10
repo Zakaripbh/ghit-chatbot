@@ -1,6 +1,26 @@
 const config = require("../../config");
+const conversationMemory = require("../conversationMemory");
+
+console.log(">>> USING GROQ SERVICE <<<");
 
 async function getReply(userId, userText) {
+  if (!config.groq.apiKey) {
+    throw new Error("GROQ_API_KEY is not configured");
+  }
+
+  const history = conversationMemory.getMessages(userId);
+
+  const messages = [
+    ...history.map(({ role, content }) => ({
+      role,
+      content,
+    })),
+    {
+      role: "user",
+      content: userText,
+    },
+  ];
+
   const response = await fetch(
     "https://api.groq.com/openai/v1/chat/completions",
     {
@@ -11,17 +31,7 @@ async function getReply(userId, userText) {
       },
       body: JSON.stringify({
         model: config.groq.model,
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are GHIT Health Assistant, a bilingual health assistant supporting English and Hausa. Provide clear, safe, evidence-based health information. Do not claim to replace a healthcare professional. For emergencies, advise the user to seek urgent medical care.",
-          },
-          {
-            role: "user",
-            content: userText,
-          },
-        ],
+        messages,
       }),
     }
   );
@@ -31,18 +41,23 @@ async function getReply(userId, userText) {
   console.log("Groq Response:", JSON.stringify(data, null, 2));
 
   if (!response.ok) {
-    const error = new Error(
-      data?.error?.message || `Groq request failed: ${response.status}`
-    );
-
+    const error = new Error(JSON.stringify(data));
     error.status = response.status;
     throw error;
   }
 
-  return (
-    data?.choices?.[0]?.message?.content ||
-    "Sorry, I couldn't generate a response."
+  const reply =
+    data.choices?.[0]?.message?.content ||
+    "Sorry, I couldn't generate a response.";
+
+  // Save the successful exchange to shared memory.
+  conversationMemory.addExchange(
+    userId,
+    userText,
+    reply
   );
+
+  return reply;
 }
 
 module.exports = {
