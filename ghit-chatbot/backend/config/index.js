@@ -23,7 +23,19 @@ module.exports = {
   // Google Gemini
   gemini: {
     apiKey: process.env.GEMINI_API_KEY,
-    model: process.env.GEMINI_MODEL || 'gemini-2.5-flash-lite',
+    model: process.env.GEMINI_MODEL || 'gemini-3.6-flash',
+  },
+
+  // Groq
+  groq: {
+    apiKey: process.env.GROQ_API_KEY,
+    model: process.env.GROQ_MODEL || 'openai/gpt-oss-120b',
+  },
+
+  // OpenRouter
+  openrouter: {
+    apiKey: process.env.OPENROUTER_API_KEY,
+    model: process.env.OPENROUTER_MODEL || 'openrouter/free',
   },
 
   // Redis
