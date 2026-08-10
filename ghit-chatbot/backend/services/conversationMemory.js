@@ -1,5 +1,4 @@
-const config = require("../../config");
-
+const config = require("../config");
 // Shared short-term conversation memory for all AI providers.
 // Memory is kept in server RAM and expires automatically.
 const conversations = new Map();
