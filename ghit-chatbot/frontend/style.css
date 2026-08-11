@@ -76,3 +76,54 @@ body {
   cursor: pointer;
 }
 #chat-form button:hover { background: #1d4ed8; }
+
+/* Markdown tables and formatted AI responses */
+.msg.bot {
+  max-width: 95%;
+  overflow-x: auto;
+}
+
+.msg.bot table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.msg.bot th,
+.msg.bot td {
+  border: 1px solid #d1d5db;
+  padding: 7px 9px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.msg.bot th {
+  font-weight: 600;
+}
+
+.msg.bot p {
+  margin: 6px 0;
+}
+
+.msg.bot ul,
+.msg.bot ol {
+  margin: 6px 0;
+  padding-left: 20px;
+}
+
+.msg.bot h1,
+.msg.bot h2,
+.msg.bot h3 {
+  margin: 8px 0 5px;
+}
+
+.msg.bot pre {
+  overflow-x: auto;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.msg.bot code {
+  font-family: monospace;
+}
