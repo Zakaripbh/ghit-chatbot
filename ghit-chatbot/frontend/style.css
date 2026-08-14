@@ -185,18 +185,52 @@ body {
 
 /* Mobile / Samsung Fold */
 @media (max-width: 500px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    height: 100dvh;
+    min-height: 100dvh;
+    align-items: stretch;
+  }
+
   #chat-widget {
     width: 100%;
-    height: 100vh;
+    max-width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
     border-radius: 0;
+    box-shadow: none;
   }
 
   #chat-header {
+    flex-shrink: 0;
     padding: 9px 12px;
   }
 
   #ghit-logo {
     width: 38px;
     height: 38px;
+  }
+
+  #chat-messages {
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #chat-form {
+    flex-shrink: 0;
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+  }
+
+  #chat-input {
+    min-width: 0;
   }
 }
