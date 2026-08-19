@@ -1,5 +1,6 @@
 const config = require("../../config");
 const conversationMemory = require("../conversationMemory");
+const ghitIdentity = require("./ghitIdentity");
 
 console.log(">>> USING REST GEMINI SERVICE <<<");
 
@@ -26,6 +27,13 @@ async function getReply(userId, userText) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      systemInstruction: {
+        parts: [
+          {
+            text: ghitIdentity,
+          },
+        ],
+      },
       contents,
     }),
   });
