@@ -172,9 +172,18 @@ body {
   overflow-wrap: anywhere;
 }
 
+/*
+  Tables: table-layout:auto + overflow-wrap:anywhere is what caused the
+  letter-by-letter squeeze. "anywhere" tells the browser a column can be
+  shrunk to almost nothing because words can break at any character, so
+  on a narrow phone every column collapses to a few px. The fix below
+  gives the table a real minimum width (so it scrolls horizontally
+  instead of collapsing) and switches cell wrapping to the gentler
+  "break-word", which only splits a word if it truly can't fit at all.
+*/
 .msg.bot table {
   width: 100%;
-  min-width: 0;
+  min-width: 460px;
 
   border-collapse: collapse;
 
@@ -194,8 +203,8 @@ body {
   text-align: left;
   vertical-align: top;
 
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  min-width: 100px;
+  overflow-wrap: break-word;
 }
 
 .msg.bot th {
@@ -417,5 +426,14 @@ body {
 
   .msg.bot {
     max-width: 98%;
+  }
+
+  .msg.bot table {
+    font-size: 12px;
+  }
+
+  .msg.bot th,
+  .msg.bot td {
+    padding: 6px 8px;
   }
 }
