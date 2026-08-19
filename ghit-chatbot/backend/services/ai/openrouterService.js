@@ -1,5 +1,6 @@
 const config = require("../../config");
 const conversationMemory = require("../conversationMemory");
+const ghitIdentity = require("./ghitIdentity");
 
 console.log(">>> USING OPENROUTER SERVICE <<<");
 
@@ -11,6 +12,10 @@ async function getReply(userId, userText) {
   const history = conversationMemory.getMessages(userId);
 
   const messages = [
+    {
+      role: "system",
+      content: ghitIdentity,
+    },
     ...history.map(({ role, content }) => ({
       role,
       content,
@@ -55,7 +60,6 @@ async function getReply(userId, userText) {
     data.choices?.[0]?.message?.content ||
     "Sorry, I couldn't generate a response.";
 
-  // Save the successful exchange to shared memory.
   conversationMemory.addExchange(
     userId,
     userText,
